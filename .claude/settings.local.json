@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/assets/css c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/assets/images c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/components/layout c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/components/ui c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/components/card c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/components/icons c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/constants c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/pages)",
+      "Bash(cp \"c:/Users/User/Documents/VSCode/NUSE_Card/brief/assets/nuse-logo.png\" \"c:/Users/User/Documents/VSCode/NUSE_Card/nuse-card-app/assets/images/nuse-logo.png\")",
+      "Bash(node -e \"console.log\\(process.version\\)\")",
+      "Bash(node -e \"try{require\\('sharp'\\);console.log\\('sharp available'\\)}catch\\(e\\){console.log\\('no sharp'\\)}\")",
+      "Bash(echo \"exit:$?\")",
+      "Read(//c/Windows/system32/**)",
+      "Bash(\"/c/Windows/system32/convert.exe\" /?)",
+      "Bash(python -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
