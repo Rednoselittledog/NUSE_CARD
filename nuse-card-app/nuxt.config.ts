@@ -2,6 +2,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
+  modules: ['@vercel/analytics'],
+
   css: ['~/assets/css/main.css'],
 
   // Flatten auto-import names so components/card/CoverPhoto.vue registers as
