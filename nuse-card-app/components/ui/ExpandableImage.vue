@@ -15,8 +15,11 @@
       :src="src"
       :alt="alt"
       class="expandable-image__img"
+      :class="{ 'is-loaded': isLoaded }"
       :style="{ objectPosition }"
-      loading="lazy"
+      :loading="eager ? 'eager' : 'lazy'"
+      :fetchpriority="eager ? 'high' : undefined"
+      @load="isLoaded = true"
     />
     <div v-else class="expandable-image__placeholder">
       <span>{{ placeholder }}</span>
@@ -44,6 +47,7 @@ const props = withDefaults(
     radius?: number
     expandable?: boolean
     objectPosition?: string
+    eager?: boolean
   }>(),
   {
     src: undefined,
@@ -53,11 +57,20 @@ const props = withDefaults(
     radius: 10,
     expandable: true,
     objectPosition: 'center',
+    eager: false,
   }
 )
 
 const isOpen = ref(false)
+const isLoaded = ref(false)
 const canExpand = computed(() => props.expandable && !!props.src)
+
+watch(
+  () => props.src,
+  () => {
+    isLoaded.value = false
+  }
+)
 
 const radiusStyle = computed(() =>
   props.shape === 'rounded' ? { borderRadius: `${props.radius}px` } : {}
@@ -106,6 +119,12 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.expandable-image__img.is-loaded {
+  opacity: 1;
 }
 
 .expandable-image--circle .expandable-image__img {

@@ -7,6 +7,7 @@
       shape="rounded"
       :radius="10"
       object-position="center 67%"
+      eager
       class="cover__image"
     />
     <div class="cover__overlay" aria-hidden="true"></div>

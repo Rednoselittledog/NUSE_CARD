@@ -8,6 +8,7 @@
         placeholder="โลโก้/ภาพชมรม"
         shape="circle"
         :expandable="expandable"
+        eager
         class="avatar__image"
       />
     </div>
