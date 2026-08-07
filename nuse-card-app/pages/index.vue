@@ -4,10 +4,10 @@
     <AvatarLogo :src="logoSrc" />
     <div class="card-body">
       <ProfileIntro />
-      <!-- <CtaButtons /> -->
+      <CtaButtons />
       <SocialLinks />
       <PhotoGallery />
-      <!-- <ClosingCta /> -->
+      <ClosingCta />
     </div>
   </CardShell>
 </template>
