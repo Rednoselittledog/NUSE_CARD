@@ -2,6 +2,7 @@
   <div class="page-shell box-border flex min-h-screen w-full justify-center sm:px-4 sm:py-14">
     <div class="relative box-border flex w-full max-w-105 flex-col items-center overflow-hidden">
       <BackgroundDecor />
+      <AuthNav />
       <slot />
     </div>
   </div>

@@ -4,6 +4,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
+  modules: ['nuxt-auth-utils'],
+
   runtimeConfig: {
     // Nuxt only auto-maps NUXT_DATABASE_URL; read the plain DATABASE_URL name
     // used in .env.example directly so no renaming is needed.
