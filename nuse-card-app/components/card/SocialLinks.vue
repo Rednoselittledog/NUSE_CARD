@@ -1,17 +1,17 @@
 <template>
-  <section class="social" aria-label="ช่องทางติดตามชมรม">
-    <div class="social__divider">
-      <span class="social__rule" aria-hidden="true"></span>
-      <span class="social__label">ติดตามเรา</span>
-      <span class="social__rule" aria-hidden="true"></span>
+  <section class="w-full" aria-label="ช่องทางติดตามชมรม">
+    <div class="my-7.5 mb-4 flex w-full items-center gap-2.5">
+      <span class="dashed-rule h-0.5 flex-1" aria-hidden="true" />
+      <span class="font-['Mali'] text-xs font-semibold whitespace-nowrap text-navy">ติดตามเรา</span>
+      <span class="dashed-rule h-0.5 flex-1" aria-hidden="true" />
     </div>
-    <ul class="social__list">
+    <ul class="m-0 flex list-none justify-center gap-4 p-0">
       <li v-for="link in SOCIAL_LINKS" :key="link.name">
         <a
           :href="link.url"
           target="_blank"
           rel="noopener"
-          class="social__button"
+          class="flex size-12 items-center justify-center rounded-full no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
           :style="{
             background: link.background,
             transform: `rotate(${link.rotate}deg)`,
@@ -36,53 +36,3 @@ import IconTiktok from '~/components/icons/IconTiktok.vue'
 // auto-imported tag name as a string — map the SOCIAL_LINKS icon name here.
 const icons: Record<string, unknown> = { IconFacebook, IconInstagram, IconTiktok }
 </script>
-
-<style scoped>
-.social {
-  width: 100%;
-}
-
-.social__divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 30px 0 16px;
-  width: 100%;
-}
-
-.social__rule {
-  flex: 1;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(18, 24, 74, 0.3) 0 6px, transparent 6px 11px);
-}
-
-.social__label {
-  font: 600 12px 'Mali', cursive;
-  color: var(--color-navy);
-  white-space: nowrap;
-}
-
-.social__list {
-  list-style: none;
-  display: flex;
-  gap: 16px;
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-}
-
-.social__button {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.social__button:focus-visible {
-  outline: 2px solid var(--color-navy);
-  outline-offset: 2px;
-}
-</style>

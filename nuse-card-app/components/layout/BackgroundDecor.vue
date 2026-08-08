@@ -1,9 +1,14 @@
 <template>
-  <div class="decor" aria-hidden="true">
-    <span class="decor__blob decor__blob--blue"></span>
-    <span class="decor__blob decor__blob--orange"></span>
-    <span class="decor__blob decor__blob--navy"></span>
-    <span v-for="dot in confetti" :key="dot.id" class="decor__dot" :style="dotStyle(dot)"></span>
+  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <span class="absolute -top-7.5 -left-7.5 block h-35 w-35 rotate-[-18deg] rounded-2xl bg-blue-light opacity-55" />
+    <span class="absolute bottom-15 -left-10 block h-25 w-25 rounded-full bg-orange opacity-[0.18]" />
+    <span class="absolute -right-12.5 -bottom-12.5 block h-45 w-45 rotate-14 rounded-[20px] bg-navy opacity-10" />
+    <span
+      v-for="dot in confetti"
+      :key="dot.id"
+      class="animate-decor-float absolute"
+      :style="dotStyle(dot)"
+    />
   </div>
 </template>
 
@@ -43,66 +48,3 @@ function dotStyle(dot: ConfettiDot) {
   }
 }
 </script>
-
-<style scoped>
-.decor {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.decor__blob {
-  position: absolute;
-  display: block;
-}
-
-.decor__blob--blue {
-  top: -30px;
-  left: -30px;
-  width: 140px;
-  height: 140px;
-  background: var(--color-blue-light);
-  border-radius: 16px;
-  transform: rotate(-18deg);
-  opacity: 0.55;
-}
-
-.decor__blob--orange {
-  bottom: 60px;
-  left: -40px;
-  width: 100px;
-  height: 100px;
-  background: var(--color-orange);
-  border-radius: 50%;
-  opacity: 0.18;
-}
-
-.decor__blob--navy {
-  bottom: -50px;
-  right: -50px;
-  width: 180px;
-  height: 180px;
-  background: var(--color-navy);
-  border-radius: 20px;
-  transform: rotate(14deg);
-  opacity: 0.1;
-}
-
-.decor__dot {
-  position: absolute;
-  animation-name: dotFloat;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-
-@keyframes dotFloat {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(12deg);
-  }
-}
-</style>

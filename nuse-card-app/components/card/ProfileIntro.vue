@@ -1,52 +1,14 @@
 <template>
-  <div class="intro">
-    <h1 class="intro__title">ชมรมผู้ประกอบการรุ่นเยาว์</h1>
-    <p class="intro__subtitle-en">Naresuan University Student Entrepreneur</p>
-    <span class="intro__underline" aria-hidden="true"></span>
-    <p class="intro__body">
+  <div class="flex w-full flex-col items-center text-center">
+    <h1 class="mt-2 mb-0 w-[90%] font-['Noto_Serif_Thai'] text-[25px] leading-[1.3] font-bold tracking-[0.3px] text-navy">
+      ชมรมผู้ประกอบการรุ่นเยาว์
+    </h1>
+    <p class="mt-0 mb-4 text-[9.5px] font-medium tracking-[1.5px] text-navy/45 uppercase">
+      Naresuan University Student Entrepreneur
+    </p>
+    <span class="mb-3.5 block h-0.75 w-17.5 rounded-xs bg-orange" aria-hidden="true" />
+    <p class="mt-0 mb-5.5 max-w-80 font-['Mali'] text-sm leading-relaxed font-semibold text-navy">
       ยินดีต้อนรับสู่ NUSE รุ่นที่ 1 คุณสามารถร่วมสร้างอนาคตของชมรมไปกับเราได้ที่นี่!
     </p>
   </div>
 </template>
-
-<style scoped>
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-}
-
-.intro__title {
-  margin: 8px 0 0;
-  font: 700 25px/1.3 'Noto Serif Thai', serif;
-  color: var(--color-navy);
-  letter-spacing: 0.3px;
-  width: 90%;
-}
-
-.intro__underline {
-  display: block;
-  width: 70px;
-  height: 3px;
-  border-radius: 2px;
-  background: #e8620c;
-  margin: 0 0 14px;
-}
-
-.intro__subtitle-en {
-  margin: 0 0 16px;
-  font: 500 9.5px 'Sarabun', sans-serif;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(18, 24, 74, 0.45);
-}
-
-.intro__body {
-  margin: 0 0 22px;
-  font: 600 14px/1.6 'Mali', cursive;
-  color: var(--color-navy);
-  max-width: 320px;
-}
-</style>

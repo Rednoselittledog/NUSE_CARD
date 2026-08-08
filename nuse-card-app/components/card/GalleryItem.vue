@@ -1,6 +1,6 @@
 <template>
-  <figure class="gallery-item" :style="itemStyle">
-    <ExpandableImage :src="src" :alt="alt" placeholder="ภาพกิจกรรม" shape="rect" class="gallery-item__photo" />
+  <figure class="m-0 box-border flex w-full flex-col items-center bg-white p-2 pb-3" :style="itemStyle">
+    <ExpandableImage :src="src" :alt="alt" placeholder="ภาพกิจกรรม" shape="rect" class="aspect-square w-full" />
   </figure>
 </template>
 
@@ -24,21 +24,3 @@ const itemStyle = computed(() => ({
   boxShadow: `3px 4px 0 ${props.shadowColor}`,
 }))
 </script>
-
-<style scoped>
-.gallery-item {
-  margin: 0;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  padding: 8px 8px 12px;
-}
-
-.gallery-item__photo {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-}
-</style>

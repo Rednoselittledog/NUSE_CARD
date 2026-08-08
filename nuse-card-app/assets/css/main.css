@@ -1,4 +1,9 @@
-:root {
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
   --color-orange: #e8620c;
   --color-orange-light: #f2954f;
   --color-navy: #12184a;
@@ -7,9 +12,44 @@
   --color-cream: #f7f2e8;
   --color-cream-light: #fef3e8;
 
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-full: 999px;
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* shadcn-vue semantic tokens, mapped onto the brand palette above */
+  --color-background: var(--color-cream);
+  --color-foreground: var(--color-navy);
+  --color-card: #ffffff;
+  --color-card-foreground: var(--color-navy);
+  --color-popover: #ffffff;
+  --color-popover-foreground: var(--color-navy);
+  --color-primary: var(--color-orange);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-blue-pale);
+  --color-secondary-foreground: var(--color-navy);
+  --color-muted: var(--color-cream-light);
+  --color-muted-foreground: rgb(18 24 74 / 60%);
+  --color-accent: var(--color-cream-light);
+  --color-accent-foreground: var(--color-navy);
+  --color-destructive: #dc2626;
+  --color-border: rgb(18 24 74 / 15%);
+  --color-input: rgb(18 24 74 / 15%);
+  --color-ring: var(--color-orange);
+
+  --animate-avatar-wiggle: avatar-wiggle 9s ease-in-out infinite;
+  --animate-decor-float: decor-float 6s ease-in-out infinite;
+}
+
+@keyframes avatar-wiggle {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@keyframes decor-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(12deg); }
 }
 
 *,
@@ -24,11 +64,17 @@ body {
   padding: 0;
 }
 
-body {
-  font-family: 'Sarabun', sans-serif;
-  color: var(--color-navy);
+@layer base {
+  body {
+    font-family: 'Sarabun', sans-serif;
+    color: var(--color-navy);
+  }
+
+  a {
+    color: var(--color-orange);
+  }
 }
 
-a {
-  color: var(--color-orange);
+.dashed-rule {
+  background: repeating-linear-gradient(90deg, rgba(18, 24, 74, 0.3) 0 6px, transparent 6px 11px);
 }

@@ -1,11 +1,11 @@
 <template>
-  <section class="gallery">
-    <div class="gallery__divider">
-      <span class="gallery__rule" aria-hidden="true"></span>
-      <span class="gallery__label">📌 คลังภาพกิจกรรม</span>
-      <span class="gallery__rule" aria-hidden="true"></span>
+  <section class="mt-8.5 w-full">
+    <div class="mb-4 flex w-full items-center gap-2.5">
+      <span class="dashed-rule h-0.5 flex-1" aria-hidden="true" />
+      <span class="font-['Mali'] text-xs font-semibold whitespace-nowrap text-navy">📌 คลังภาพกิจกรรม</span>
+      <span class="dashed-rule h-0.5 flex-1" aria-hidden="true" />
     </div>
-    <div v-if="photos.length" class="gallery__row">
+    <div v-if="photos.length" class="grid grid-cols-1 gap-4">
       <GalleryItem
         v-for="photo in photos"
         :key="photo.id"
@@ -44,36 +44,3 @@ const photos = computed(() =>
     }))
 )
 </script>
-
-<style scoped>
-.gallery {
-  width: 100%;
-  margin-top: 34px;
-}
-
-.gallery__divider {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 16px;
-  width: 100%;
-}
-
-.gallery__rule {
-  flex: 1;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(18, 24, 74, 0.3) 0 6px, transparent 6px 11px);
-}
-
-.gallery__label {
-  font: 600 12px 'Mali', cursive;
-  color: var(--color-navy);
-  white-space: nowrap;
-}
-
-.gallery__row {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 16px;
-}
-</style>

@@ -1,12 +1,20 @@
+import tailwindcss from '@tailwindcss/vite'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
   css: ['~/assets/css/main.css'],
 
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   // Flatten auto-import names so components/card/CoverPhoto.vue registers as
-  // <CoverPhoto/> instead of <CardCoverPhoto/>.
-  components: [{ path: '~/components', pathPrefix: false }],
+  // <CoverPhoto/> instead of <CardCoverPhoto/>. Restricted to .vue so the
+  // shadcn-vue barrel index.ts files (e.g. components/ui/button/index.ts)
+  // aren't scanned as components and don't collide with Button.vue etc.
+  components: [{ path: '~/components', pathPrefix: false, extensions: ['vue'] }],
 
   app: {
     head: {

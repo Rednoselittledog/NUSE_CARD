@@ -21,7 +21,42 @@
       "Bash(git push *)",
       "Bash(nslookup github.com)",
       "Bash(git config *)",
-      "Bash(git ls-remote *)"
+      "Bash(git ls-remote *)",
+      "Bash(npm --version)",
+      "WebFetch(domain:www.shadcn-vue.com)",
+      "Bash(npx shadcn-vue@latest init --help)",
+      "Bash(npx shadcn-vue@latest init -t nuxt -d --no-src-dir -y)",
+      "Bash(npx shadcn-vue@latest init -t nuxt -d --no-src-dir -y --cwd .)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api *)",
+      "Bash(curl -s https://api.github.com/repos/unovue/shadcn-vue/contents/apps/www/registry)",
+      "Bash(curl -sv https://api.github.com/repos/unovue/shadcn-vue/contents/apps/www)",
+      "Bash(curl -s https://api.github.com/repos/unovue/shadcn-vue/contents/)",
+      "Bash(curl -s https://api.github.com/repos/unovue/shadcn-vue/contents/packages)",
+      "Bash(curl -s https://api.github.com/repos/unovue/shadcn-vue/contents/apps)",
+      "Bash(curl -s https://api.github.com/repos/unovue/shadcn-vue/contents/apps/v4)",
+      "Bash(find \"$HOME/AppData/Local/npm-cache/_npx\" -maxdepth 2 -iname \"*shadcn*\" 2>/dev/null)",
+      "Read(//c/Users/User/AppData/Local/npm-cache/_npx/**)",
+      "Bash(find \"$HOME/AppData/Local/npm-cache/_npx\" -maxdepth 3 2>/dev/null | head -50)",
+      "Bash(curl -s \"https://api.github.com/search/issues?q=repo:unovue/shadcn-vue+%22Cannot+find+module+%27components%27%22\")",
+      "Bash(curl -s \"https://api.github.com/repos/unovue/shadcn-vue/pulls/1855\")",
+      "Bash(curl -s \"https://patch-diff.githubusercontent.com/raw/unovue/shadcn-vue/pull/1855.diff\")",
+      "Bash(curl -s \"https://shadcn-vue.com/schema.json\")",
+      "Bash(npx shadcn-vue@latest add button dialog avatar -y)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\({dependencies:p.dependencies, devDependencies:p.devDependencies}, null, 2\\)\\)\")",
+      "Bash(curl -s http://localhost:3000/ -o /tmp/out.html -w \"HTTP_STATUS:%{http_code}\\\\n\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"http://localhost:3000/_nuxt/assets/css/main.css\")",
+      "Bash(curl -s \"http://localhost:3000/_nuxt/assets/css/main.css\" > /tmp/main.css; grep -c \"bg-orange\" /tmp/main.css; grep -c \"rounded-full\" /tmp/main.css; grep -c \"animate-avatar-wiggle\" /tmp/main.css; grep -c \"text-navy\" /tmp/main.css)",
+      "Bash(chromium-cli --help)",
+      "Bash(npx --yes playwright@latest install chromium --with-deps)",
+      "Bash(npm ls *)",
+      "Bash(NODE_PATH=\"c:\\\\Users\\\\User\\\\Documents\\\\VSCode\\\\NUSE_Card\\\\nuse-card-app\\\\node_modules\" node smoke.mjs)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.devDependencies\\)\\)\")",
+      "Bash(rm \"/c/Users/User/AppData/Local/Temp/claude/c--Users-User-Documents-VSCode-NUSE-Card/4eea6981-fdb5-4d92-8f1f-531fe8d5ecd1/scratchpad/handoff-ui-check.md\")"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
     ]
   }
 }

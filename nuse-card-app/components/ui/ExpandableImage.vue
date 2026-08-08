@@ -1,7 +1,7 @@
 <template>
   <div
-    class="expandable-image"
-    :class="[`expandable-image--${shape}`, { 'is-clickable': canExpand }]"
+    class="group relative h-full w-full overflow-hidden"
+    :class="[shape === 'circle' && 'rounded-full', canExpand && 'cursor-pointer']"
     :style="radiusStyle"
     :role="canExpand ? 'button' : undefined"
     :tabindex="canExpand ? 0 : undefined"
@@ -14,30 +14,45 @@
       v-if="src"
       :src="src"
       :alt="alt"
-      class="expandable-image__img"
-      :class="{ 'is-loaded': isLoaded }"
+      class="block h-full w-full transition-opacity duration-300 ease-out"
+      :class="[isLoaded ? 'opacity-100' : 'opacity-0', shape === 'circle' ? 'object-contain' : 'object-cover']"
       :style="{ objectPosition }"
       :loading="eager ? 'eager' : 'lazy'"
       :fetchpriority="eager ? 'high' : undefined"
       @load="isLoaded = true"
     />
-    <div v-else class="expandable-image__placeholder">
+    <div
+      v-else
+      class="flex h-full w-full items-center justify-center rounded-[inherit] border-[1.5px] border-dashed p-1.5 text-center font-medium text-[10px] text-navy/40"
+      style="border-color: rgba(18, 24, 74, 0.25); background-image: repeating-linear-gradient(45deg, rgba(18, 24, 74, 0.03) 0 8px, rgba(18, 24, 74, 0.06) 8px 16px)"
+    >
       <span>{{ placeholder }}</span>
     </div>
-    <span v-if="canExpand" class="expandable-image__hint" aria-hidden="true">⤢</span>
-  </div>
+    <span
+      v-if="canExpand"
+      class="pointer-events-none absolute right-1 bottom-1 flex h-[18px] w-[18px] items-center justify-center rounded bg-navy/55 text-[11px] text-white opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+      aria-hidden="true"
+    >⤢</span>
 
-  <Teleport to="body">
-    <Transition name="lightbox-fade">
-      <div v-if="isOpen" class="lightbox" @click.self="close">
-        <button type="button" class="lightbox__close" aria-label="ปิดรูปขยาย" @click="close">✕</button>
-        <img v-if="src" :src="src" :alt="alt" class="lightbox__img" />
-      </div>
-    </Transition>
-  </Teleport>
+    <Dialog v-model:open="isOpen">
+      <DialogContent
+        class="flex max-w-none items-center justify-center border-none bg-transparent p-0 shadow-none sm:max-w-none"
+        :show-close-button="false"
+      >
+        <DialogTitle class="sr-only">{{ alt || placeholder }}</DialogTitle>
+        <img v-if="src" :src="src" :alt="alt" class="max-h-[85vh] max-w-[90vw] rounded-lg object-contain shadow-2xl" />
+        <DialogClose
+          class="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-lg text-navy"
+          aria-label="ปิดรูปขยาย"
+        >✕</DialogClose>
+      </DialogContent>
+    </Dialog>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { Dialog, DialogClose, DialogContent, DialogTitle } from '~/components/ui/dialog'
+
 const props = withDefaults(
   defineProps<{
     src?: string
@@ -80,147 +95,4 @@ function open() {
   if (!canExpand.value) return
   isOpen.value = true
 }
-
-function close() {
-  isOpen.value = false
-}
-
-function onKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape') close()
-}
-
-watch(isOpen, (open) => {
-  if (import.meta.client) {
-    document.body.style.overflow = open ? 'hidden' : ''
-  }
-})
-
-onMounted(() => window.addEventListener('keydown', onKeydown))
-onUnmounted(() => {
-  window.removeEventListener('keydown', onKeydown)
-  if (import.meta.client) document.body.style.overflow = ''
-})
 </script>
-
-<style scoped>
-.expandable-image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.expandable-image--circle {
-  border-radius: 50%;
-}
-
-.expandable-image__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.expandable-image__img.is-loaded {
-  opacity: 1;
-}
-
-.expandable-image--circle .expandable-image__img {
-  object-fit: contain;
-}
-
-.expandable-image__placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6px;
-  border: 1.5px dashed rgba(18, 24, 74, 0.25);
-  border-radius: inherit;
-  font: 500 10px 'Sarabun', sans-serif;
-  color: rgba(18, 24, 74, 0.4);
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(18, 24, 74, 0.03) 0 8px,
-    rgba(18, 24, 74, 0.06) 8px 16px
-  );
-}
-
-.is-clickable {
-  cursor: pointer;
-}
-
-.expandable-image__hint {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(18, 24, 74, 0.55);
-  color: #fff;
-  font-size: 11px;
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  pointer-events: none;
-}
-
-.is-clickable:hover .expandable-image__hint,
-.is-clickable:focus-visible .expandable-image__hint {
-  opacity: 1;
-}
-
-.expandable-image:focus-visible {
-  outline: 2px solid var(--color-orange, #e8620c);
-  outline-offset: 2px;
-}
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(18, 24, 74, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.lightbox__img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-}
-
-.lightbox__close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--color-navy, #12184a);
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.lightbox-fade-enter-active,
-.lightbox-fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.lightbox-fade-enter-from,
-.lightbox-fade-leave-to {
-  opacity: 0;
-}
-</style>
