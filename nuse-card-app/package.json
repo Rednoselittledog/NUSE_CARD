@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@lucide/vue": "^1.30.0",
+    "@lucide/vue": "^1.31.0",
     "@vercel/analytics": "^1.4.1",
     "@vercel/blob": "^2.7.0",
     "@vueuse/core": "^14.4.0",

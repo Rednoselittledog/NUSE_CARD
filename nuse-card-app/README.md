@@ -19,7 +19,7 @@ Then open the printed local URL (usually `http://localhost:3000`).
 
 - `pages/index.vue` — assembles the single card page.
 - `components/layout/` — `CardShell` (gradient background + centered column) and `BackgroundDecor` (blobs/confetti).
-- `components/card/` — `CoverPhoto`, `AvatarLogo`, `ProfileIntro`, `CtaButtons`, `SocialLinks`, `PhotoGallery` (shows featured photos from `/api/images`), `GalleryItem`.
+- `components/card/` — `CoverPhoto`, `AvatarLogo`, `ProfileIntro`, `UpcomingActivities`, `SocialLinks`, `PhotoGallery` (shows featured photos from `/api/images`), `GalleryItem`.
 - `components/ui/ExpandableImage.vue` — reusable image slot used by every photo (cover + gallery). Shows a placeholder when no `src` is given, and opens a full-screen lightbox on click once a real photo is set.
 - `components/icons/` — inline SVG icons for Facebook/Instagram/TikTok.
 - `constants/links.ts` — the join-form URL and social links (edit here to change links).

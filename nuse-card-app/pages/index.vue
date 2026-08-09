@@ -4,7 +4,7 @@
     <AvatarLogo :src="logoSrc" />
     <div class="card-body">
       <ProfileIntro />
-      <CtaButtons />
+      <UpcomingActivities />
       <SocialLinks />
       <PhotoGallery />
       <ClosingCta />

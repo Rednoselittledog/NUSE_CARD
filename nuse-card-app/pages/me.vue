@@ -4,10 +4,13 @@
       <div class="flex flex-col gap-4">
         <h1 class="font-['Mali'] text-xl font-semibold text-navy">สวัสดี {{ user?.name }}</h1>
         <p class="text-sm text-muted-foreground">รหัสนิสิต {{ user?.studentId }}, {{ user?.role }}</p>
-        <Button variant="outline" @click="logout">ออกจากระบบ</Button>
       </div>
 
       <StampGrid :stamps="stamps ?? []" />
+
+      <JoinButton />
+
+      <Button variant="outline" @click="logout">ออกจากระบบ</Button>
     </div>
   </CardShell>
 </template>
@@ -15,6 +18,7 @@
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
 import StampGrid from '~/components/activity/StampGrid.vue'
+import JoinButton from '~/components/card/JoinButton.vue'
 import type { AttendanceStamp } from '~/shared/types/attendance'
 
 definePageMeta({ middleware: 'auth' })

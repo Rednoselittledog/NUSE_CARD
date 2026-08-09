@@ -15,10 +15,16 @@
         :shadow-color="photo.shadowColor"
       />
     </div>
+    <div class="mt-4 flex w-full justify-center">
+      <Button as-child variant="outline" size="sm">
+        <NuxtLink to="/gallery">ดูคลังภาพทั้งหมด</NuxtLink>
+      </Button>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { Button } from '~/components/ui/button'
 import type { GalleryImage } from '~/shared/types/image'
 
 // Featured photos are managed from /gallery (star icon there toggles which
