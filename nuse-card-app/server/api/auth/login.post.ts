@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs'
+import { loginSchema } from '~/shared/validation/auth'
 
 interface MemberRow {
   id: string
@@ -9,11 +10,11 @@ interface MemberRow {
 }
 
 export default defineEventHandler(async (event) => {
-  const { studentId, password } = await readBody(event)
-
-  if (!studentId || !password) {
-    throw createError({ statusCode: 400, statusMessage: 'studentId and password are required' })
+  const parsed = loginSchema.safeParse(await readBody(event))
+  if (!parsed.success) {
+    throw createError({ statusCode: 400, statusMessage: parsed.error.issues[0]?.message ?? 'ข้อมูลไม่ถูกต้อง' })
   }
+  const { studentId, password } = parsed.data
 
   const invalidCredentials = () => createError({ statusCode: 401, statusMessage: 'Invalid student ID or password' })
 

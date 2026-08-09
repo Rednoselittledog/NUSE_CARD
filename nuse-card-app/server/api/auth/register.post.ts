@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs'
+import { registerSchema } from '~/shared/validation/auth'
 
 interface MemberRow {
   id: string
@@ -8,11 +9,11 @@ interface MemberRow {
 }
 
 export default defineEventHandler(async (event) => {
-  const { studentId, name, password } = await readBody(event)
-
-  if (!studentId || !name || !password || String(password).length < 8) {
-    throw createError({ statusCode: 400, statusMessage: 'studentId, name, and a password of 8+ chars are required' })
+  const parsed = registerSchema.safeParse(await readBody(event))
+  if (!parsed.success) {
+    throw createError({ statusCode: 400, statusMessage: parsed.error.issues[0]?.message ?? 'ข้อมูลไม่ถูกต้อง' })
   }
+  const { studentId, name, password } = parsed.data
 
   const existing = await query('select id from member where student_id = $1', [studentId])
   if (existing.rows.length > 0) {

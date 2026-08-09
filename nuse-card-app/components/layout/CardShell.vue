@@ -10,9 +10,9 @@
 
 <style scoped>
 .page-shell {
-  background: linear-gradient(160deg, #fef3e8 0%, #f7f2e8 35%, #eaf1fb 70%, #f7f2e8 100%);
+  background: linear-gradient(160deg, var(--color-cream-light) 0%, var(--color-cream) 35%, var(--color-blue-pale) 70%, var(--color-cream) 100%);
   background-image: radial-gradient(rgba(18, 24, 74, 0.06) 1px, transparent 1.4px),
-    linear-gradient(160deg, #fef3e8 0%, #f7f2e8 35%, #eaf1fb 70%, #f7f2e8 100%);
+    linear-gradient(160deg, var(--color-cream-light) 0%, var(--color-cream) 35%, var(--color-blue-pale) 70%, var(--color-cream) 100%);
   background-size: 14px 14px, 100% 100%;
 }
 </style>
