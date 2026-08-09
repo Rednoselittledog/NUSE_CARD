@@ -1,12 +1,17 @@
 import { z } from 'zod'
 
+const studentId = z
+  .string()
+  .trim()
+  .regex(/^\d{8}$/, 'รหัสนิสิตต้องเป็นตัวเลข 8 หลัก')
+
 export const loginSchema = z.object({
-  studentId: z.string().trim().min(1, 'กรุณากรอกรหัสนิสิต'),
+  studentId,
   password: z.string().min(1, 'กรุณากรอกรหัสผ่าน'),
 })
 
 export const registerSchema = z.object({
-  studentId: z.string().trim().min(1, 'กรุณากรอกรหัสนิสิต'),
+  studentId,
   name: z.string().trim().min(1, 'กรุณากรอกชื่อ-นามสกุล'),
   password: z.string().min(8, 'รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร'),
 })

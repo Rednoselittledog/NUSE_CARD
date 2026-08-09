@@ -8,7 +8,7 @@
 
     <div class="flex flex-col gap-1.5">
       <Label for="studentId">รหัสนิสิต</Label>
-      <Input id="studentId" v-model="studentId" type="text" />
+      <Input id="studentId" v-model="studentId" type="text" inputmode="numeric" maxlength="8" />
       <p v-if="fieldErrors.studentId" class="text-destructive text-xs">{{ fieldErrors.studentId }}</p>
     </div>
 
