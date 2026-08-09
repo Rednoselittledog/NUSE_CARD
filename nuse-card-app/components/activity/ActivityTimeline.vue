@@ -24,28 +24,17 @@
       :key="activity.id"
       :activity="activity"
       :index="index"
-      :time-state="activityTimeState(activities, index, now)"
       @select="$emit('select', activity)"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import ActivityStation from './ActivityStation.vue'
 import type { Activity } from '~/shared/types/activity'
-import { activityTimeState } from '~/shared/utils/activityStatus'
 
-const props = defineProps<{ activities: Activity[] }>()
+defineProps<{ activities: Activity[] }>()
 defineEmits<{ select: [activity: Activity] }>()
-
-const now = ref(Date.now())
-let timer: ReturnType<typeof setInterval> | undefined
-
-onMounted(() => {
-  timer = setInterval(() => { now.value = Date.now() }, 60_000)
-})
-onUnmounted(() => clearInterval(timer))
 </script>
 
 <style scoped>

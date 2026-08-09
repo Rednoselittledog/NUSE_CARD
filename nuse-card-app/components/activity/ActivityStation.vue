@@ -2,21 +2,16 @@
   <button
     type="button"
     class="milestone"
-    :class="[
-      `status-${timeState || 'locked'}`,
-      side
-    ]"
+    :class="[`status-${activity.status}`, side]"
     :style="{ top: `${65 + index * 174}px` }"
     @click="$emit('select')"
   >
     <span class="milestone-info">
+      <img v-if="activity.coverImage" :src="activity.coverImage" alt="" class="milestone-cover" />
       <span class="milestone-label">{{ index + 1 }}{{ ordinalSuffix }} STATION</span>
       <strong>{{ activity.title }}</strong>
       <small>{{ formatActivityDate(activity.startsAt) }}</small>
-      
-      <em v-if="timeState === 'active'" class="now">✦ NOW</em>
-      <em v-else-if="timeState === 'completed'" class="completed">✓ COMPLETED</em>
-      <em v-else class="locked">🔒 LOCKED</em>
+      <em :class="`status-text-${activity.status}`">{{ activityStatusLabel(activity.status) }}</em>
     </span>
 
     <span class="marker" :class="`marker-${color}`">
@@ -28,13 +23,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { Activity } from '~/shared/types/activity'
-import type { ActivityTimeState } from '~/shared/utils/activityStatus'
+import { activityStatusLabel } from '~/shared/utils/activityStatus'
 import { formatActivityDate } from '~/shared/utils/formatDate'
 
 const props = defineProps<{
   activity: Activity
   index: number
-  timeState?: ActivityTimeState
 }>()
 
 defineEmits<{ select: [] }>()
@@ -110,6 +104,15 @@ const ordinalSuffix = computed(() => {
   box-sizing: border-box;
 }
 
+.milestone-cover {
+  display: block;
+  width: 100%;
+  height: 54px;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
 .milestone-label {
   display: block;
   color: #999;
@@ -143,11 +146,11 @@ const ordinalSuffix = computed(() => {
   letter-spacing: 0.5px;
 }
 
-.now { color: var(--color-orange, #f47a21); }
-.completed { color: var(--color-navy, #11184f); }
-.locked { color: #aaa; }
+.status-text-published { color: var(--color-orange, #f47a21); }
+.status-text-closed { color: var(--color-navy, #11184f); }
+.status-text-draft { color: #aaa; }
 
-.milestone.status-locked { opacity: 0.42; filter: grayscale(0.45); }
-.milestone.status-completed { opacity: 0.68; }
-.milestone.status-active { opacity: 1; }
+.milestone.status-draft { opacity: 0.42; filter: grayscale(0.45); }
+.milestone.status-closed { opacity: 0.68; }
+.milestone.status-published { opacity: 1; }
 </style>
