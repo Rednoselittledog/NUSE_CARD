@@ -19,13 +19,11 @@
 </template>
 
 <script setup lang="ts">
-// Drop image files into assets/images/gallery/ — every file there shows up
-// here automatically (sorted by filename), no code changes needed.
-// Supported: .jpg, .jpeg, .png, .webp
-const galleryImages = import.meta.glob('../../assets/images/gallery/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
+import type { GalleryImage } from '~/shared/types/image'
+
+// Featured photos are managed from /gallery (star icon there toggles which
+// ones show up here) instead of being committed as files in this repo.
+const { data: images } = await useFetch<GalleryImage[]>('/api/images', { query: { featured: true } })
 
 // Scattered-polaroid look cycles through this pattern as more photos are added.
 const STYLE_PATTERN = [
@@ -34,13 +32,11 @@ const STYLE_PATTERN = [
 ]
 
 const photos = computed(() =>
-  Object.keys(galleryImages)
-    .sort()
-    .map((path, index) => ({
-      id: path,
-      src: galleryImages[path],
-      alt: `ภาพกิจกรรม ${index + 1}`,
-      ...STYLE_PATTERN[index % STYLE_PATTERN.length],
-    }))
+  (images.value ?? []).map((image, index) => ({
+    id: image.id,
+    src: image.url,
+    alt: `ภาพกิจกรรม ${index + 1}`,
+    ...STYLE_PATTERN[index % STYLE_PATTERN.length],
+  }))
 )
 </script>

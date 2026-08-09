@@ -17,7 +17,6 @@ CREATE TABLE activity (
   title          text NOT NULL,
   description    text,
   cover_image    text,
-  gallery        jsonb,
   location       text,
   starts_at      timestamptz NOT NULL,
   ends_at        timestamptz,
@@ -34,4 +33,15 @@ CREATE TABLE attendance (
   member_id      uuid NOT NULL REFERENCES member(id),
   checked_in_at  timestamptz NOT NULL DEFAULT now(),
   UNIQUE (activity_id, member_id)
+);
+
+-- Every uploaded photo lives here: scoped to an activity (activity_id set)
+-- or general/unscoped (null). `featured` marks it for display on the home
+-- page gallery, independent of whether it's also tied to an activity.
+CREATE TABLE image (
+  id             uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  url            text NOT NULL,
+  activity_id    uuid REFERENCES activity(id) ON DELETE CASCADE,
+  featured       boolean NOT NULL DEFAULT false,
+  created_at     timestamptz NOT NULL DEFAULT now()
 );

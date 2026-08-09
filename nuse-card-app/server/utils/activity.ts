@@ -6,7 +6,6 @@ export interface ActivityRow {
   description: string | null
   location: string | null
   cover_image: string | null
-  gallery: string[] | null
   starts_at: string
   ends_at: string | null
   status: 'draft' | 'published' | 'closed'
@@ -21,7 +20,6 @@ export function mapActivity(row: ActivityRow): Activity {
     description: row.description,
     location: row.location,
     coverImage: row.cover_image,
-    gallery: row.gallery ?? [],
     startsAt: row.starts_at,
     endsAt: row.ends_at,
     status: row.status,

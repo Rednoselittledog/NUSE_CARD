@@ -12,7 +12,6 @@ export const activityInputSchema = z.object({
   description: optionalText,
   location: optionalText,
   coverImage: optionalText,
-  gallery: z.array(z.string()).optional(),
   startsAt: z
     .string()
     .min(1, 'กรุณาระบุวันเวลาเริ่ม')

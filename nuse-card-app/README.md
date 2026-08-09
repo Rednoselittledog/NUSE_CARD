@@ -19,7 +19,7 @@ Then open the printed local URL (usually `http://localhost:3000`).
 
 - `pages/index.vue` — assembles the single card page.
 - `components/layout/` — `CardShell` (gradient background + centered column) and `BackgroundDecor` (blobs/confetti).
-- `components/card/` — `CoverPhoto`, `AvatarLogo`, `ProfileIntro`, `CtaButtons`, `SocialLinks`, `PhotoGallery` (auto-loops over `assets/images/gallery/`), `GalleryItem`.
+- `components/card/` — `CoverPhoto`, `AvatarLogo`, `ProfileIntro`, `CtaButtons`, `SocialLinks`, `PhotoGallery` (shows featured photos from `/api/images`), `GalleryItem`.
 - `components/ui/ExpandableImage.vue` — reusable image slot used by every photo (cover + gallery). Shows a placeholder when no `src` is given, and opens a full-screen lightbox on click once a real photo is set.
 - `components/icons/` — inline SVG icons for Facebook/Instagram/TikTok.
 - `constants/links.ts` — the join-form URL and social links (edit here to change links).
@@ -30,10 +30,9 @@ Then open the printed local URL (usually `http://localhost:3000`).
 then in `pages/index.vue` import it and set `coverPhotoSrc` to it — see the `TODO` comment
 there.
 
-**Gallery photos** (any number): just drop image files into `assets/images/gallery/`. That
-folder is scanned automatically (`components/card/PhotoGallery.vue` uses `import.meta.glob`),
-sorted by filename, and rendered — no code changes needed. Name files so alphabetical order
-matches display order (e.g. `01-camp.jpg`, `02-workshop.jpg`, `03-meetup.jpg`).
+**Gallery photos** (any number): upload from the `/gallery` page (staff only) and star (★) the
+ones that should show on the home page. Photos are stored in the `image` table (Postgres) with
+their file on Vercel Blob — no repo changes or redeploys needed to add/remove them.
 
 ### Recommended image sizes
 

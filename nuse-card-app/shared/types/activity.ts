@@ -4,7 +4,6 @@ export interface Activity {
   description: string | null
   location: string | null
   coverImage: string | null
-  gallery: string[]
   startsAt: string
   endsAt: string | null
   status: 'draft' | 'published' | 'closed'
