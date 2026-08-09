@@ -9,11 +9,12 @@ export interface ActivityRow {
   starts_at: string
   ends_at: string | null
   status: 'draft' | 'published' | 'closed'
+  checkin_token: string
   checkin_open: boolean
   created_at: string
 }
 
-export function mapActivity(row: ActivityRow): Activity {
+export function mapActivity(row: ActivityRow, opts?: { includeToken?: boolean }): Activity {
   return {
     id: row.id,
     title: row.title,
@@ -24,5 +25,6 @@ export function mapActivity(row: ActivityRow): Activity {
     endsAt: row.ends_at,
     status: row.status,
     checkinOpen: row.checkin_open,
+    ...(opts?.includeToken ? { checkinToken: row.checkin_token } : {}),
   }
 }

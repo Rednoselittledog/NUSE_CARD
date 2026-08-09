@@ -25,6 +25,7 @@ import { computed } from 'vue'
 import type { Activity } from '~/shared/types/activity'
 import { activityStatusLabel } from '~/shared/utils/activityStatus'
 import { formatActivityDate } from '~/shared/utils/formatDate'
+import { stationMarkerColor } from '~/shared/utils/stationMarker'
 
 const props = defineProps<{
   activity: Activity
@@ -33,8 +34,7 @@ const props = defineProps<{
 
 defineEmits<{ select: [] }>()
 
-const MARKER_COLORS = ['navy', 'orange', 'blue', 'orange', 'navy', 'pink']
-const color = computed(() => MARKER_COLORS[props.index % MARKER_COLORS.length])
+const color = computed(() => stationMarkerColor(props.index))
 const side = computed(() => (props.index % 2 === 0 ? 'left' : 'right'))
 
 const ordinalSuffix = computed(() => {

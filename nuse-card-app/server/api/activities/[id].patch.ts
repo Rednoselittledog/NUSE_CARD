@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   if (!parsed.success) {
     throw createError({ statusCode: 400, statusMessage: parsed.error.issues[0]?.message ?? 'ข้อมูลไม่ถูกต้อง' })
   }
-  const { title, description, location, coverImage, startsAt, endsAt, status } = parsed.data
+  const { title, description, location, coverImage, startsAt, endsAt, status, checkinOpen } = parsed.data
 
   const { rows } = await query<ActivityRow>(
     `update activity set
@@ -17,13 +17,14 @@ export default defineEventHandler(async (event) => {
        cover_image = coalesce($5, cover_image),
        starts_at = coalesce($6, starts_at),
        ends_at = coalesce($7, ends_at),
-       status = coalesce($8::activity_status, status)
+       status = coalesce($8::activity_status, status),
+       checkin_open = coalesce($9, checkin_open)
      where id = $1
      returning *`,
-    [id, title ?? null, description ?? null, location ?? null, coverImage ?? null, startsAt ?? null, endsAt ?? null, status ?? null],
+    [id, title ?? null, description ?? null, location ?? null, coverImage ?? null, startsAt ?? null, endsAt ?? null, status ?? null, checkinOpen ?? null],
   )
   const activity = rows[0]
   if (!activity) throw createError({ statusCode: 404, statusMessage: 'Activity not found' })
 
-  return mapActivity(activity)
+  return mapActivity(activity, { includeToken: true })
 })

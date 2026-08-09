@@ -20,14 +20,24 @@
 
         <p class="text-sm leading-relaxed text-navy/70">{{ activity.description || 'ยังไม่มีรายละเอียดเพิ่มเติม' }}</p>
 
-        <div v-if="isStaff" class="flex flex-col gap-1.5">
-          <div class="flex gap-2">
-            <Button variant="outline" @click="editOpen = true">แก้ไขกิจกรรมนี้</Button>
-            <Button variant="destructive" :disabled="deleting" @click="onDelete">
-              {{ deleting ? 'กำลังลบ...' : 'ลบกิจกรรมนี้' }}
-            </Button>
+        <div v-if="isStaff" class="flex flex-col gap-3">
+          <div class="flex flex-col gap-1.5">
+            <div class="flex gap-2">
+              <Button variant="outline" @click="editOpen = true">แก้ไขกิจกรรมนี้</Button>
+              <Button variant="destructive" :disabled="deleting" @click="onDelete">
+                {{ deleting ? 'กำลังลบ...' : 'ลบกิจกรรมนี้' }}
+              </Button>
+            </div>
+            <p v-if="deleteError" class="text-destructive text-xs">{{ deleteError }}</p>
           </div>
-          <p v-if="deleteError" class="text-destructive text-xs">{{ deleteError }}</p>
+
+          <CheckinPanel
+            v-if="activity.checkinToken"
+            :activity-id="activityId"
+            :checkin-token="activity.checkinToken"
+            :checkin-open="activity.checkinOpen"
+            @changed="refresh"
+          />
         </div>
 
         <section class="flex flex-col gap-3 border-t border-dashed border-navy/20 pt-6">
@@ -56,6 +66,7 @@
 
 <script setup lang="ts">
 import ActivityForm from '~/components/activity/ActivityForm.vue'
+import CheckinPanel from '~/components/activity/CheckinPanel.vue'
 import GalleryGrid from '~/components/gallery/GalleryGrid.vue'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'

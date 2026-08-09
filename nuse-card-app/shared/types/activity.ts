@@ -8,4 +8,5 @@ export interface Activity {
   endsAt: string | null
   status: 'draft' | 'published' | 'closed'
   checkinOpen: boolean
+  checkinToken?: string
 }

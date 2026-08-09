@@ -23,6 +23,7 @@ export const activityInputSchema = z.object({
     .transform((value) => value || null)
     .refine((value) => !value || !Number.isNaN(Date.parse(value)), 'วันเวลาสิ้นสุดไม่ถูกต้อง'),
   status: z.enum(['draft', 'published', 'closed']).optional(),
+  checkinOpen: z.boolean().optional(),
 })
 
 export type ActivityInput = z.infer<typeof activityInputSchema>

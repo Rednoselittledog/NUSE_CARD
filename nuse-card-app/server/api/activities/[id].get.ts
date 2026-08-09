@@ -9,5 +9,5 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Activity not found' })
   }
 
-  return mapActivity(activity)
+  return mapActivity(activity, { includeToken: user?.role === 'staff' })
 })

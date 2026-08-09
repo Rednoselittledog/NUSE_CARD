@@ -17,5 +17,5 @@ export default defineEventHandler(async (event) => {
     [title, description ?? null, location ?? null, coverImage ?? null, startsAt, endsAt ?? null, status ?? null, checkinToken, staff.id],
   )
 
-  return mapActivity(rows[0])
+  return mapActivity(rows[0], { includeToken: true })
 })
