@@ -33,7 +33,10 @@
         </div>
         <div v-else-if="item.status === 'error'" class="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-black/70 p-1 text-center text-[10px] text-white">
           <span>{{ item.error }}</span>
-          <button type="button" class="underline" @click="dismiss(item.id)">ปิด</button>
+          <div class="flex gap-2">
+            <button type="button" class="underline" @click="retry(item.id)">ลองใหม่</button>
+            <button type="button" class="underline" @click="dismiss(item.id)">ปิด</button>
+          </div>
         </div>
       </div>
     </div>
@@ -94,7 +97,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{ changed: [] }>()
 
-const { pendingUploads, enqueue, dismiss } = useImageUploadQueue({
+const { pendingUploads, enqueue, retry, dismiss } = useImageUploadQueue({
   activityId: props.uploadActivityId,
   onUploaded: () => emit('changed'),
 })
