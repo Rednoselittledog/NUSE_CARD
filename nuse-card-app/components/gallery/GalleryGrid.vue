@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col gap-2">
     <div v-if="isStaff && images.length" class="flex items-center justify-between">
-      <button type="button" class="text-xs font-semibold text-navy underline" @click="toggleSelectMode">
+      <button type="button" class="rounded-sm text-xs font-semibold text-navy underline hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange" @click="toggleSelectMode">
         {{ selectMode ? 'ยกเลิกเลือก' : 'เลือกรูป' }}
       </button>
       <div v-if="selectMode" class="flex items-center gap-2">
-        <button type="button" class="text-xs text-navy/60 underline" @click="selectAll">เลือกทั้งหมด</button>
+        <button type="button" class="rounded-sm text-xs text-navy/60 underline hover:text-orange focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange" @click="selectAll">เลือกทั้งหมด</button>
         <Button size="sm" variant="destructive" :disabled="!selected.size || deleting" @click="onBulkDelete">
           {{ deleting ? 'กำลังลบ...' : `ลบ (${selected.size})` }}
         </Button>
@@ -18,7 +18,7 @@
         v-for="image in images"
         :key="image.id"
         type="button"
-        class="relative aspect-square overflow-hidden rounded-md"
+        class="relative aspect-square overflow-hidden rounded-md transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange"
         @click="onCardClick(image)"
       >
         <img :src="image.url" alt="" class="h-full w-full object-cover" :class="{ 'opacity-60': selectMode && selected.has(image.id) }" />
@@ -63,7 +63,7 @@
             <label class="flex flex-col gap-1 text-xs text-navy/60">
               เปลี่ยนกิจกรรม
               <select
-                class="border-input h-9 rounded-md border bg-transparent px-3 text-sm"
+                class="border-input h-9 rounded-md border bg-transparent px-3 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
                 :value="lightboxImage.activityId ?? ''"
                 @change="onReassign(lightboxImage, ($event.target as HTMLSelectElement).value || null)"
               >

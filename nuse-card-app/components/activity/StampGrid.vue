@@ -55,8 +55,8 @@ defineProps<{ stamps: AttendanceStamp[] }>()
   object-fit: cover;
 }
 
-.marker-orange { background: var(--color-orange, #f47a21); }
-.marker-navy { background: var(--color-navy, #11184f); }
-.marker-blue { background: var(--color-blue, #42aeca); }
-.marker-pink { background: var(--color-pink, #df5572); }
+.marker-orange { background: var(--color-orange); }
+.marker-navy { background: var(--color-navy); }
+.marker-blue { background: var(--color-blue); }
+.marker-pink { background: var(--color-pink); }
 </style>

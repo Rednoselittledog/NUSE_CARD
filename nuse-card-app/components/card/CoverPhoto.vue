@@ -12,12 +12,12 @@
     />
     <div
       class="pointer-events-none absolute inset-y-0 inset-x-3.5 rounded-lg"
-      style="background: linear-gradient(120deg, rgba(232, 98, 12, 0.3) 0%, transparent 55%, rgba(18, 24, 74, 0.35) 100%)"
+      style="background: linear-gradient(120deg, color-mix(in oklab, var(--color-orange) 30%, transparent) 0%, transparent 55%, color-mix(in oklab, var(--color-navy) 35%, transparent) 100%)"
       aria-hidden="true"
     />
     <div
       class="pointer-events-none absolute inset-x-3.5 bottom-0 h-15 rounded-b-lg"
-      style="background: linear-gradient(to top, rgba(18, 24, 74, 0.65) 0%, rgba(18, 24, 74, 0) 100%)"
+      style="background: linear-gradient(to top, color-mix(in oklab, var(--color-navy) 65%, transparent) 0%, transparent 100%)"
       aria-hidden="true"
     />
     <span

@@ -15,7 +15,7 @@ const props = withDefaults(
   {
     alt: 'ภาพกิจกรรมชมรม',
     rotate: 0,
-    shadowColor: 'rgba(18,24,74,.2)',
+    shadowColor: 'color-mix(in oklab, var(--color-navy) 20%, transparent)',
   }
 )
 

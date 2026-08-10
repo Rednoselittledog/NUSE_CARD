@@ -42,7 +42,7 @@
       <select
         id="status"
         v-model="status"
-        class="border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 text-sm shadow-xs outline-none"
+        class="border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 text-sm shadow-xs outline-none transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
       >
         <option value="draft">ฉบับร่าง</option>
         <option value="published">เปิดรับ</option>

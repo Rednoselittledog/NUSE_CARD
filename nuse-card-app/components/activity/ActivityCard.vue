@@ -75,7 +75,7 @@ withDefaults(
 
 .activity-card-label {
   display: block;
-  color: #999;
+  color: var(--color-muted-foreground);
   font-size: 7px;
   font-weight: 900;
   letter-spacing: 0.8px;
@@ -84,7 +84,7 @@ withDefaults(
 .activity-card-info strong {
   display: block;
   margin: 2px 0;
-  color: var(--color-navy, #11184f);
+  color: var(--color-navy);
   font-size: 14px;
   font-weight: 900;
   line-height: 1.15;
@@ -92,7 +92,7 @@ withDefaults(
 
 .activity-card-info small {
   display: block;
-  color: var(--color-orange, #f47a21);
+  color: var(--color-orange);
   font-size: 8px;
   font-weight: 900;
 }
@@ -106,7 +106,7 @@ withDefaults(
   letter-spacing: 0.5px;
 }
 
-.status-text-published { color: var(--color-orange, #f47a21); }
-.status-text-closed { color: var(--color-navy, #11184f); }
-.status-text-draft { color: #aaa; }
+.status-text-published { color: var(--color-orange); }
+.status-text-closed { color: var(--color-navy); }
+.status-text-draft { color: var(--color-muted-foreground); }
 </style>
