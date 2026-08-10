@@ -4,7 +4,7 @@
       <h1 class="font-['Mali'] text-xl font-semibold text-navy">เข้าสู่ระบบ</h1>
       <AuthForm mode="login" @success="onSuccess" />
       <p class="text-sm text-muted-foreground">
-        ยังไม่มีบัญชี? <NuxtLink to="/register" class="underline">สมัครสมาชิก</NuxtLink>
+        ยังไม่มีบัญชี? <NuxtLink :to="{ path: '/register', query: route.query }" class="underline">สมัครสมาชิก</NuxtLink>
       </p>
     </div>
   </CardShell>
