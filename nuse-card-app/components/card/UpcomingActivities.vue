@@ -6,7 +6,7 @@
       <span class="dashed-rule h-0.5 flex-1" aria-hidden="true" />
     </div>
     <div :class="upcoming.length > 1 ? 'grid grid-cols-2 gap-3' : 'flex'">
-      <NuxtLink v-for="activity in upcoming" :key="activity.id" :to="`/activity/${activity.id}`" class="no-underline">
+      <NuxtLink v-for="activity in upcoming" :key="activity.id" :to="`/activity/${activity.id}`" class="w-full no-underline">
         <ActivityCard :activity="activity" :orientation="upcoming.length > 1 ? 'vertical' : 'horizontal'" />
       </NuxtLink>
     </div>

@@ -36,6 +36,7 @@ withDefaults(
 <style scoped>
 .activity-card {
   border-radius: 7px;
+  border: 1px solid rgba(18, 24, 74, 0.15);
   background: rgba(255, 250, 241, 0.93);
   backdrop-filter: blur(4px);
   box-sizing: border-box;
