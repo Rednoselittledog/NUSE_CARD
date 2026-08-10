@@ -1,6 +1,11 @@
 <template>
   <div class="activity-card" :class="orientation">
-    <img v-if="activity.coverImage" :src="activity.coverImage" alt="" class="activity-card-cover" />
+    <div class="activity-card-cover">
+      <ExpandableImage v-if="activity.coverImage" :src="activity.coverImage" shape="rounded" :radius="5" :expandable="false" />
+      <div v-else class="activity-card-cover-fallback">
+        <img :src="fallbackLogo" alt="" />
+      </div>
+    </div>
     <span class="activity-card-info">
       <span v-if="label" class="activity-card-label">{{ label }}</span>
       <strong>{{ activity.title }}</strong>
@@ -11,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import fallbackLogo from '~/assets/images/activity-placeholder.png'
 import type { Activity } from '~/shared/types/activity'
 import { activityStatusLabel } from '~/shared/utils/activityStatus'
 import { formatActivityDate } from '~/shared/utils/formatDate'
@@ -52,19 +58,34 @@ withDefaults(
 
 .activity-card-cover {
   display: block;
-  border-radius: 5px;
-  object-fit: cover;
+}
+
+.activity-card-cover-fallback {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-card-cover-fallback img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .activity-card.vertical .activity-card-cover {
   width: 100%;
-  height: 54px;
+  aspect-ratio: 1 / 1;
+  /* capped: the roadmap stacks these on a fixed 174px pitch (ActivityStation.vue);
+     an uncapped square could grow past that on a wide card and overlap the next station */
+  max-height: 84px;
   margin-bottom: 4px;
 }
 
 .activity-card.horizontal .activity-card-cover {
-  width: 110px;
-  height: 80px;
+  width: 80px;
+  aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
 

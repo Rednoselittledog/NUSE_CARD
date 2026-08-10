@@ -15,8 +15,7 @@
         class="flex flex-col items-center gap-1 text-center"
       >
         <span class="stamp-marker" :class="`marker-${stationMarkerColor(index)}`">
-          <img v-if="stamp.coverImage" :src="stamp.coverImage" alt="" class="stamp-cover" />
-          <span v-else>{{ String(index + 1).padStart(2, '0') }}</span>
+          <img :src="fallbackLogo" alt="" class="stamp-logo" />
         </span>
         <span class="line-clamp-1 max-w-20 text-[11px] font-semibold text-navy">{{ stamp.title }}</span>
         <span class="text-[10px] text-navy/50">{{ formatActivityDate(stamp.checkedInAt) }}</span>
@@ -26,6 +25,7 @@
 </template>
 
 <script setup lang="ts">
+import fallbackLogo from '~/assets/images/activity-placeholder.png'
 import type { AttendanceStamp } from '~/shared/types/attendance'
 import { formatActivityDate } from '~/shared/utils/formatDate'
 import { stationMarkerColor } from '~/shared/utils/stationMarker'
@@ -36,23 +36,22 @@ defineProps<{ stamps: AttendanceStamp[] }>()
 <style scoped>
 .stamp-marker {
   display: flex;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   width: 56px;
   height: 56px;
   flex-shrink: 0;
+  padding: 10px;
   border-radius: 999px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
-  color: white;
-  font-size: 14px;
-  font-weight: 900;
   overflow: hidden;
 }
 
-.stamp-cover {
+.stamp-logo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .marker-orange { background: var(--color-orange); }

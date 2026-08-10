@@ -53,7 +53,13 @@
       "Bash(npm ls *)",
       "Bash(NODE_PATH=\"c:\\\\Users\\\\User\\\\Documents\\\\VSCode\\\\NUSE_Card\\\\nuse-card-app\\\\node_modules\" node smoke.mjs)",
       "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.devDependencies\\)\\)\")",
-      "Bash(rm \"/c/Users/User/AppData/Local/Temp/claude/c--Users-User-Documents-VSCode-NUSE-Card/4eea6981-fdb5-4d92-8f1f-531fe8d5ecd1/scratchpad/handoff-ui-check.md\")"
+      "Bash(rm \"/c/Users/User/AppData/Local/Temp/claude/c--Users-User-Documents-VSCode-NUSE-Card/4eea6981-fdb5-4d92-8f1f-531fe8d5ecd1/scratchpad/handoff-ui-check.md\")",
+      "Bash(node --env-file=.env _run-schema-tmp.mjs)",
+      "Bash(rm _run-schema-tmp.mjs)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(24\\).toString\\('hex'\\)\\)\")",
+      "Bash(npx shadcn-vue@latest add input label --yes)",
+      "Bash(node _migrate-images-tmp.mjs)",
+      "Bash(awk -F= '/^BLOB_READ_WRITE_TOKEN=/{v=substr\\($0,23\\); print \"prefix:\", substr\\(v,1,15\\); print \"suffix:\", substr\\(v,length\\(v\\)-5\\); print \"len:\", length\\(v\\); print \"has_quotes:\", \\(v ~ /^\"/ || v ~ /^'\"'\"'/\\)}' \"C:\\\\Users\\\\User\\\\Documents\\\\VSCode\\\\NUSE_Card\\\\nuse-card-app\\\\.env\")"
     ],
     "additionalDirectories": [
       "\\tmp"
