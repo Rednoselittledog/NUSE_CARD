@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-30 -mt-10 flex h-27 w-27 items-center justify-center">
+  <div class="relative -mt-10 flex h-27 w-27 items-center justify-center">
     <span
       class="animate-avatar-wiggle absolute inset-0 rounded-full border-[2.5px] border-dashed border-navy opacity-50"
       aria-hidden="true"

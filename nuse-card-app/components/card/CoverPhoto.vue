@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-10 mt-3.5 box-border h-33 w-full px-3.5">
+  <div class="relative mt-3.5 box-border h-33 w-full px-3.5">
     <ExpandableImage
       :src="src"
       alt="ปกกิจกรรมชมรม"
@@ -21,11 +21,11 @@
       aria-hidden="true"
     />
     <span
-      class="absolute -top-2.5 left-6.5 z-20 h-5.5 w-13.5 rotate-[-8deg] bg-blue-light opacity-85 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
+      class="absolute -top-2.5 left-6.5 h-5.5 w-13.5 rotate-[-8deg] bg-blue-light opacity-85 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
       aria-hidden="true"
     />
     <span
-      class="absolute -top-2.5 right-7.5 z-20 h-5.5 w-13.5 rotate-[9deg] bg-orange opacity-85 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
+      class="absolute -top-2.5 right-7.5 h-5.5 w-13.5 rotate-[9deg] bg-orange opacity-85 shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
       aria-hidden="true"
     />
   </div>

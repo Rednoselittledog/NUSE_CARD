@@ -1,6 +1,6 @@
 <template>
   <CardShell>
-    <div class="relative z-10 flex w-full flex-col gap-6 px-6 py-10">
+    <div class="relative flex w-full flex-col gap-6 px-6 py-10">
       <h1 class="font-['Mali'] text-xl font-semibold text-navy">สมัครสมาชิก</h1>
       <AuthForm mode="register" @success="onSuccess" />
       <p class="text-sm text-muted-foreground">

@@ -1,5 +1,5 @@
 <template>
-  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
     <span class="absolute -top-7.5 -left-7.5 block h-35 w-35 rotate-[-18deg] rounded-2xl bg-blue-light opacity-55" />
     <span class="absolute bottom-15 -left-10 block h-25 w-25 rounded-full bg-orange opacity-[0.18]" />
     <span class="absolute -right-12.5 -bottom-12.5 block h-45 w-45 rotate-14 rounded-[20px] bg-navy opacity-10" />

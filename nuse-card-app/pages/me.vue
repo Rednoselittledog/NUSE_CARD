@@ -1,6 +1,6 @@
 <template>
   <CardShell>
-    <div class="relative z-10 flex w-full flex-col gap-6 px-6 py-10">
+    <div class="relative flex w-full flex-col gap-6 px-6 py-10">
       <div class="flex flex-col gap-4">
         <h1 class="font-['Mali'] text-xl font-semibold text-navy">สวัสดี {{ user?.name }}</h1>
         <p class="text-sm text-muted-foreground">รหัสนิสิต {{ user?.studentId }}, {{ user?.role }}</p>

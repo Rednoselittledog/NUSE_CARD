@@ -23,7 +23,6 @@ const logoSrc = logoUrl
 <style scoped>
 .card-body {
   position: relative;
-  z-index: 1;
   width: 100%;
   padding: 20px 24px 30px;
   display: flex;

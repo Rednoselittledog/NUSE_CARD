@@ -1,6 +1,6 @@
 <template>
   <CardShell>
-    <div class="relative z-10 flex w-full flex-col items-center gap-4 px-6 py-16 text-center">
+    <div class="relative flex w-full flex-col items-center gap-4 px-6 py-16 text-center">
       <template v-if="state === 'loading'">
         <p class="text-sm text-navy/60">กำลังเช็คอิน...</p>
       </template>
